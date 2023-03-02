@@ -45,10 +45,13 @@
 
                 stage('TEST ON MAC MACHINE') {
                     steps {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         sh '''
                             sleep 6
                             echo "This is a TEST on WINDOWS"
+                            exit 1
                         '''
+                        }
                     }
                 }
 
